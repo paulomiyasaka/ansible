@@ -6,14 +6,17 @@
 lab2.dirceusilva.com ansible_connection=ssh ansible_user=root ansible_ssh_pass=grupo7
 
 [orquestrador]
-192.168.0.37 
+192.168.0.37 ansible_connection=ssh ansible_user=root ansible_ssh_pass=grupo7
 
 [aplicacoes]
-192.168.0.38
-192.168.0.39
+192.168.0.38 ansible_connection=ssh ansible_user=root ansible_ssh_pass=grupo7
+192.168.0.39 ansible_connection=ssh ansible_user=root ansible_ssh_pass=grupo7
 
 [bancodados]
-192.168.0.40
+192.168.0.40 ansible_connection=ssh ansible_user=root ansible_ssh_pass=grupo7
 
 [balanceador]
-192.168.0.41
+192.168.0.41 ansible_connection=ssh ansible_user=root ansible_ssh_pass=grupo7
+
+[teste]
+192.168.0.42 ansible_connection=ssh ansible_user=root ansible_ssh_pass=grupo7
