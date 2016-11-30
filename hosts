@@ -1,0 +1,19 @@
+# HOSTS HABILITADOS PARA SERVIDOR 
+# DO PROF. DIRCEU SILVA
+# AULA DE PUPPET - ANSIBLE
+
+[dirceusilva]
+lab2.dirceusilva.com ansible_connection=ssh ansible_user=root ansible_ssh_pass=grupo7
+
+[orquestrador]
+192.168.0.37 
+
+[aplicacoes]
+192.168.0.38
+192.168.0.39
+
+[bancodados]
+192.168.0.40
+
+[balanceador]
+192.168.0.41
