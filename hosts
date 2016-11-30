@@ -17,6 +17,3 @@ lab2.dirceusilva.com ansible_connection=ssh ansible_user=root ansible_ssh_pass=g
 
 [balanceador]
 192.168.0.41 ansible_connection=ssh ansible_user=root ansible_ssh_pass=grupo7
-
-[teste]
-192.168.0.42 ansible_connection=ssh ansible_user=root ansible_ssh_pass=grupo7
