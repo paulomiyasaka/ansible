@@ -5,38 +5,7 @@
  */
 function db_connect()
 {
-  $dbname = 'aula_dirceu';
-    $con = mysql_connect("192.168.0.40","root","1234567");
-    if (!$con)
-    {
-        die('Could not connect: ' . mysql_error());
-    }
-if (mysql_num_rows(mysql_query("SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = '". $dbname ."'"))) {
-        echo "Database $dbname already exists.";
-        $sql = "SELECT count(*) FROM users";
-        if(!mysql_query($sql)){
-            $sql = "
-              CREATE TABLE users(
-                  id INT UNSIGNED NOT NULL AUTO_INCREMENT, -- id
-                  name VARCHAR(60) NOT NULL, -- nome
-                  email VARCHAR(80) NOT NULL, -- email
-                  gender ENUM('m', 'f') NOT NULL, -- gênero (masculino, feminino)
-                  birthdate DATE NOT NULL, -- data de nascimento
-                  PRIMARY KEY(id)
-              ) COLLATE=utf8_unicode_ci;";
-
-             mysql_query($sql, $con);
-        }
-    }
-    else {
-        $sql = "CREATE DATABASE aula_dirceu;
-USE aula_dirceu;";      
-        mysql_query($sql,$con);
-      
-        //echo "Database $dbname created.";
-    }
-  
-  
+ 
     $PDO = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8', DB_USER, DB_PASS);
   
     return $PDO;
