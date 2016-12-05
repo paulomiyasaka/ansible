@@ -16,8 +16,9 @@ if (mysql_num_rows(mysql_query("SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEM
     }
     else {
         $sql = "CREATE DATABASE aula_dirceu;
-USE aula_dirceu;
-
+USE aula_dirceu;";      
+        mysql_query($sql,$con);
+      $sql = "
 CREATE TABLE users(
     id INT UNSIGNED NOT NULL AUTO_INCREMENT, -- id
     name VARCHAR(60) NOT NULL, -- nome
@@ -27,8 +28,8 @@ CREATE TABLE users(
     PRIMARY KEY(id)
 ) COLLATE=utf8_unicode_ci;";
       
-        mysql_query($sql,$con);
-        echo "Database $dbname created.";
+      mysql_query($sql, $con);
+        //echo "Database $dbname created.";
     }
   
   
