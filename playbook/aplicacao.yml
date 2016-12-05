@@ -25,11 +25,8 @@
     - name: start httpd
       service: name=httpd state=started enabled=yes
 
-    - git:
-        repo: 'https://gitlab.com/Rafael.rgsousa/aula_automacao.git'
-        dest: /var/www/html/
-        clone: yes
-        force: yes
+    - name: Copiar aplicação
+      copy: src=/root/github/aplicacao/* dest=/var/www/html/ backup=no
 
 
       
