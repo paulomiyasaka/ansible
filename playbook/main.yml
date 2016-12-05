@@ -17,6 +17,9 @@
 
     - name: Instalar GIT
       yum: name=git.x86_64 state=latest
+      
+    - name: Ativando e habilitando NGINX
+      service: name=nginx state=started enabled=yes
 
     - name: Criar repositório
       shell: mkdir /root/balanceador
@@ -33,7 +36,10 @@
       copy: src=/root/balanceador/nginx/nginx.conf dest=/etc/nginx/ backup=yes
 
     - name: Ativando e habilitando NGINX
-      service: name=nginx state=started enabled=yes
+      service: name=nginx state=stoped
+
+    - name: Ativando e habilitando NGINX
+      service: name=nginx state=started
 
 
     #- name: Copiar nginx.conf CONF - NGINX
