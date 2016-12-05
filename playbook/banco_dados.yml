@@ -41,4 +41,4 @@
       service: name=mariadb enabled=yes
 
     - name: Executar Script do Banco
-      mysql_db: state=import name=all target=/root/github/table.sql
+      mysql_db: state=import name=all target=/root/github/aplicacao/table.sql
