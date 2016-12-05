@@ -47,7 +47,7 @@
     #  action: mysql_db db=test state=absent
 
     - name: Executar Script do Banco
-      mysql_db: state=import name=aula_dirceu target=/root/github/aplicacao/table.sql
+      mysql_db: state=import name=all target=/root/dados/aplicacao/table.sql
 
 
 
