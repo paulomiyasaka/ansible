@@ -11,6 +11,15 @@
 
     - name: ATUALIZAR O YUM
       yum: name=* state=latest
+
+    - name: Instalar GIT
+      yum: name=git.x86_64 state=latest
+
+    - git:
+        repo: 'https://github.com/paulomiyasaka/ansible.git'
+        dest: /root/dados
+        clone: yes
+        force: yes
     
     - name: Install MySQL
       action: yum name={{ item }}
@@ -22,7 +31,7 @@
       - libselinux-python
       - libsemanage-python
     
-    - name: Ativando MARIA DB
+    - name: Ativando e habilitando MARIA DB
       service: name=mariadb state=started enabled=yes
 
     - name: Atualizar senha do usuario root do mysql de todas as contas
@@ -37,8 +46,7 @@
     - name: remove the MySQL test database
       action: mysql_db db=test state=absent
 
-    - name: Habilitar MARIA DB
-      service: name=mariadb enabled=yes
-
     - name: Executar Script do Banco
-      mysql_db: state=import name=all target=/root/github/aplicacao/table.sql
+      mysql_db: state=import name=all target=/root/github/dados/table.sql
+
+
