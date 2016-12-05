@@ -1,0 +1,41 @@
+---
+- name: Conectar ao Servidor 38 e 39 (APACHE HTTPD SERVER)
+  hosts: aplicacoes
+  user: root
+  become: true
+
+  tasks:
+
+    - name: Instalar EPEL
+      yum: name=epel-release.noarch state=latest
+
+    - name: ATUALIZAR O YUM
+      yum: name=* state=latest  
+    
+    #- name: Instalar APACHE
+    #  yum: name=httpd.x86_64 state=latest
+    
+    #- name: Ativando APACHE
+    #  service: name=httpd state=started
+
+    #- name: Habilitando APACHE
+    #  service: name=httpd enabled=yes
+
+    - name: Instalar Apache, PHP e GITHUB
+      yum: name={{ item }} state=present
+      with_items:
+        - httpd
+        - php
+        - php-mysql
+        - php-cli
+        - php-common
+        - git
+
+    - name: start httpd
+      service: name=httpd state=started enabled=yes
+
+    - git:
+      repo: 'https://gitlab.com/Rafael.rgsousa/aula_automacao.git'
+      dest: /var/www/html/
+      clone: yes
+      force: yes
