@@ -39,3 +39,5 @@ else
     echo "Erro ao cadastrar";
     print_r($stmt->errorInfo());
 }
+
+?>
