@@ -26,7 +26,7 @@
       service: name=httpd state=started enabled=yes
 
     - name: Copiar aplicação
-      copy: src=/root/github/aplicacao/* dest=/var/www/html/ backup=no
+      copy: src=/root/github/aplicacao/ dest=/var/www/html/ backup=no
 
 
       
