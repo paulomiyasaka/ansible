@@ -22,6 +22,7 @@
        repo: 'https://github.com/paulomiyasaka/ansible.git'
        dest: /root
        clone: yes
+       force: yes
 
     #- name: Copiar app.conf APP - NGINX
     #  copy: src=~/Ansible/nginx_conf/app.conf dest=/etc/nginx/conf.d/ backup=yes
