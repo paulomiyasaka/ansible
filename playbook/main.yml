@@ -17,29 +17,24 @@
 
     - name: Instalar GIT
       yum: name=git.x86_64 state=latest
-      
-    - name: Ativando e habilitando NGINX
-      service: name=nginx state=started enabled=yes
 
-    - name: Criar repositório
-      shell: mkdir /root/balanceador
+    #- name: Criar repositório
+    #  shell: mkdir /root/balanceador
 
     - git:
         repo: 'https://github.com/paulomiyasaka/ansible.git'
         dest: /root/balanceador
         clone: yes
+        force: yes
 
     - name: Copiar app.conf APP - NGINX
-      copy: src=/root/github/nginx/app.conf dest=/etc/nginx/conf.d/app.conf backup=yes 
+      copy: src=/root/balanceador/nginx/app.conf dest=/etc/nginx/conf.d/ backup=yes mode=0777
     
     - name: Copiar nginx.conf NGINX_CONF - NGINX
-      copy: src=/root/github/nginx/nginx.conf dest=/etc/nginx/nginx.conf backup=yes
+      copy: src=/root/balanceador/nginx/nginx.conf dest=/etc/nginx/ backup=yes mode=0777
 
     - name: Ativando e habilitando NGINX
-      service: name=nginx state=stopped
-
-    - name: Ativando e habilitando NGINX
-      service: name=nginx state=started
+      service: name=nginx state=started enabled=yes
 
 
     #- name: Copiar nginx.conf CONF - NGINX
