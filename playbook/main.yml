@@ -20,7 +20,7 @@
 
     - git:
        repo: 'https://github.com/paulomiyasaka/ansible.git'
-       dest: /root/
+       dest: /root
        clone: yes
 
     #- name: Copiar app.conf APP - NGINX
