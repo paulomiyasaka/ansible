@@ -1,0 +1,45 @@
+#Instalar o EPEL e ANSIBLE
+
+---
+- name: Conectar ao SERVIDOR TESTE
+  hosts: dirceusilva
+  port: 2241
+  remote_user: root
+
+  tasks:
+
+  - name: INSTALAR O EPEL
+    yum: name=epel-release.noarch state=latest
+
+  - name: ATUALIZAR O YUM
+    yum: name=* state=latest
+
+  - name: INSTALAR O ANSIBLE
+    yum: name=ansible.noarch state=latest
+
+  - name: INSTALAR O GIT
+    yum: name=git.x86_64 state=latest
+
+  #- name: Criar repositório
+  #  shell: mkdir /root/github
+
+  - git:
+      repo: 'https://github.com/paulomiyasaka/ansible.git'
+      dest: /root/github
+      clone: yes
+      force: yes
+
+  - name: Configurar HOSTS
+    shell: cp /root/github/hosts /etc/ansible/
+  
+  #- name: Executar o restante dos Playbooks
+  #  shell: ansible-playbook /root/github/playbook/main.yml
+
+  #- name: COPIAR ARQUIVO HOSTS PARA ANSIBLE
+  #  copy: src=~/Ansible/hosts dest=/etc/ansible/ backup=yes
+
+  #- name: Extraindo playbook para o orquestrador
+  #  unarchive: src=~/Ansible/playbook.zip dest=/root/
+
+ 
+  
