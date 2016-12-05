@@ -38,6 +38,6 @@
     #- name: Copiar nginx.conf CONF - NGINX
     #  copy: src=~/Ansible/nginx_conf/nginx.conf dest=/etc/nginx/ backup=yes
 
-- include: aplicacao1.yml
+- include: aplicacao.yml
 #- include: aplicacao2.yml
 - include: banco_dados.yml
