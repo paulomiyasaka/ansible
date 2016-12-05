@@ -11,18 +11,9 @@
 
     - name: ATUALIZAR O YUM
       yum: name=* state=latest  
-    
-    #- name: Instalar APACHE
-    #  yum: name=httpd.x86_64 state=latest
-    
-    #- name: Ativando APACHE
-    #  service: name=httpd state=started
-
-    #- name: Habilitando APACHE
-    #  service: name=httpd enabled=yes
-
+   
     - name: Instalar Apache, PHP e GITHUB
-      yum: name={{ item }} state=present
+      yum: name={{ item }} state=latest
       with_items:
         - httpd
         - php
@@ -39,3 +30,6 @@
         dest: /var/www/html/
         clone: yes
         force: yes
+
+
+      
