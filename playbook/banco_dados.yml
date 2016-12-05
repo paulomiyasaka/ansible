@@ -37,18 +37,17 @@
     - name: Atualizar senha do usuario root do mysql de todas as contas
       mysql_user: name=root host=192.168.0.40 password=1234567 priv=*.*:ALL,GRANT state=present
 
-    #- name: Deletar anonymous MySQL server user
-    #  action: mysql_user user= host=192.168.0.40 state=absent
+    - name: Deletar anonymous MySQL server user
+      action: mysql_user user= host=192.168.0.40 state=absent
 
-    #- name: delete anonymous MySQL server user for localhost
-    #  action: mysql_user user= state=absent
+    - name: delete anonymous MySQL server user for localhost
+      action: mysql_user user= state=absent
 
-    #- name: remove the MySQL test database
-    #  action: mysql_db db=test state=absent
+    - name: remove the MySQL test database
+      action: mysql_db db=test state=absent
 
     - name: Executar Script do Banco
       mysql_db: state=import name=all target=/root/dados/aplicacao/table.sql
-
 
 
 
