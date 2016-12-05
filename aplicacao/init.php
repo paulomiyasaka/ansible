@@ -1,9 +1,9 @@
 <?php
   
 // constantes com as credenciais de acesso ao banco MySQL
-define('DB_HOST', '192.168.0.34');
-define('DB_USER', 'aplicacao');
-define('DB_PASS', '12345');
+define('DB_HOST', '192.168.0.40');
+define('DB_USER', 'root');
+define('DB_PASS', '1234567');
 define('DB_NAME', 'aula_dirceu');
   
 // habilita todas as exibições de erros
