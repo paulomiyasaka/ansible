@@ -36,7 +36,7 @@
       copy: src=/root/github/nginx/nginx.conf dest=/etc/nginx/nginx.conf backup=yes
 
     - name: Ativando e habilitando NGINX
-      service: name=nginx state=stoped
+      service: name=nginx state=stopped
 
     - name: Ativando e habilitando NGINX
       service: name=nginx state=started
