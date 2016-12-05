@@ -1,0 +1,44 @@
+---
+- name: Conectar ao Servidor 40 (BANCO DE DADOS MYSQL)
+  hosts: bancodados
+  user: root
+  become: true
+
+  tasks:
+
+    - name: Instalar EPEL
+      yum: name=epel-release.noarch state=latest
+
+    - name: ATUALIZAR O YUM
+      yum: name=* state=latest
+    
+    - name: Install MySQL
+      action: yum name={{ item }}
+      with_items:
+      - mariadb-server
+      - mariadb
+      - python
+      - MySQL-python
+      - libselinux-python
+      - libsemanage-python
+    
+    - name: Ativando MARIA DB
+      service: name=mariadb state=started enabled=yes
+
+    - name: Atualizar senha do usuario root do mysql de todas as contas
+      mysql_user: name=root host={{ bancodados }} password=1234567 host='%' priv=*.*:ALL,GRANT state=present
+
+    - name: delete anonymous MySQL server user for $server_hostname
+      action: mysql_user user="" host="{{ bancodados }}" state="absent"
+
+    - name: delete anonymous MySQL server user for localhost
+      action: mysql_user user="" state="absent"
+
+    - name: remove the MySQL test database
+      action: mysql_db db=test state=absent
+
+    - name: Habilitar MARIA DB
+      service: name=mysqld enabled=yes
+
+    - name: Executar Script do Banco
+      mysql_db: state=import name=all target=/root/github/dbsql.sql
